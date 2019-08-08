@@ -1,0 +1,27 @@
+server:
+  port: 9080
+
+spring:
+  application:
+    name: authservice
+
+
+eureka:
+  client:
+    enabled: true
+    # healthcheck:
+      # enabled: true
+    serviceUrl:
+      defaultZone: http://microservices-eureka-service:8761/eureka/
+  instance:
+#    preferIpAddress: false
+    hostname: authservice
+ 
+ 
+# eureka:
+  # client:
+    # serviceUrl:
+      # defaultZone: http://ab6829af16b3011e9be060a9cdfbffc5-1091015259.us-east-1.elb.amazonaws.com:8761/eureka/
+     
+
+  
