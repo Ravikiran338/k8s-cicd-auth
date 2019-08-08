@@ -6,8 +6,8 @@ pipeline {
 	environment {
      DOCKERHUB_USERNAME = "ravi338"
      APP_NAME = "msa-banking-aws"
-     
-     REPOSITORY_TAG="${DOCKERHUB_USERNAME}/${APP_NAME}-auth:${BUILD_ID}"
+     SERVICE_NAME = "auth"
+     REPOSITORY_TAG="${DOCKERHUB_USERNAME}/${APP_NAME}-${SERVICE_NAME}:${BUILD_ID}"
 	 }
 	stages {
 	         stage ('scm checkout') {
@@ -34,7 +34,7 @@ pipeline {
 					      export PATH=$HOME/bin:$PATH
 					      echo `kubectl get svc`
 					      echo `kubectl get nodes`
-											  envsubst < ${WORKSPACE}/auth.yaml | kubectl apply -f -
+											  envsubst < ${WORKSPACE}/${SERVICE_NAME}.yaml | kubectl apply -f -
 										   '''										   
 						}
 					}
