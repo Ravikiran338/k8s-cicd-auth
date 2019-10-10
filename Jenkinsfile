@@ -20,10 +20,10 @@ pipeline {
 	                      }
                     }						  
 			 stage ('build') {
-			 script{
-                env.STAGE = "build"
-                }
 			       steps {
+				  script{
+                                      env.STAGE = "build"
+                                        }
 				           sh label: '', script: '''cd ${WORKSPACE}
                                                     mvn clean install
 			                                     '''
@@ -32,8 +32,8 @@ pipeline {
 			 stage ('deploy') {
 			      steps {
 				  script{
-                env.STAGE = "deploy"
-                }
+                                      env.STAGE = "deploy"
+                                        }
 				     sh label: '', script: '''
                                               cd ${WORKSPACE}			
 					      docker build -t ${REPOSITORY_TAG} .
